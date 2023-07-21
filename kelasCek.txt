@@ -1,0 +1,127 @@
+package javaapplication1;
+
+import java.util.Scanner;
+
+public class Cek {
+
+    static Scanner input = new Scanner(System.in);
+
+    public static String cekNama(String cek) {
+
+        String nama = input.nextLine();
+
+        boolean kapital = false;
+
+        for (char chr : nama.toCharArray()) {
+
+            if (Character.isUpperCase(chr)) {
+                kapital = true;
+                break;
+            }
+
+        }
+
+        while (!kapital) {
+
+            System.err.println("   Wajib memiliki setidaknya 1 huruf kapital");
+
+            if (cek.equals("nama")) {
+                System.out.print("  Nama            : ");
+                nama = input.nextLine();
+            } else if (cek.equals("alamat")) {
+                System.out.print("  Alamat          : ");
+                nama = input.nextLine();
+            } else if (cek.equals("pekerjaan")) {
+                System.out.print("  Pekerjaan       : ");
+                nama = input.nextLine();
+            }
+
+            kapital = false;
+
+            for (char chr : nama.toCharArray()) {
+
+                if (Character.isUpperCase(chr)) {
+                    kapital = true;
+                    break;
+                }
+
+            }
+
+        }
+
+        return nama;
+
+    }
+
+    public static String cekJenisKelamin() {
+
+        String jenisKelamin = input.nextLine();
+
+        while (!jenisKelamin.equalsIgnoreCase("pria") && !jenisKelamin.equalsIgnoreCase("wanita")) {
+
+            System.err.println("   Masukan jenis kelamin yang benar (PRIA/WANITA)");
+            System.out.print("  Jenis Kelamin   : ");
+            jenisKelamin = input.nextLine();
+
+        }
+
+        return jenisKelamin;
+
+    }
+
+    public static String cekNoTlp() {
+
+        String noTlp = input.nextLine();
+
+        while (noTlp.length() != 12 || !noTlp.matches("[0-9]+")) {
+
+            System.err.println("   Panjang karakter min dan max 12 dan input harus nomor");
+            System.out.print("  Nomor HP        : ");
+            noTlp = input.nextLine();
+
+        }
+
+        return noTlp;
+
+    }
+
+    public static String cekLamaPinjam(String cek) {
+
+        String lamaPinjam = input.nextLine();
+
+        if (cek.equals("lamaPinjam")) {
+
+            while (lamaPinjam.isBlank() || !lamaPinjam.matches("[1-6]")) {
+
+                System.err.println("   Input tidak di kenali");
+                System.out.print("  Lama Peminjaman : ");
+                lamaPinjam = input.nextLine();
+
+            }
+        } else if (cek.equals("pilihPerpus")) {
+
+            while (lamaPinjam.isBlank() || !lamaPinjam.matches("[1-2]")) {
+
+                System.err.println("   Input tidak di kenali");
+                System.out.print("Pilih : ");
+                lamaPinjam = input.nextLine();
+
+            }
+
+        } else if (cek.equals("pilihBuku")) {
+
+            while (lamaPinjam.isBlank() || !lamaPinjam.matches("[1-9]|1[0-4]")) {
+
+                System.err.println("   Input tidak di kenali");
+                System.out.print("Pilih : ");
+                lamaPinjam = input.nextLine();
+
+            }
+
+        }
+
+        return lamaPinjam;
+
+    }
+
+}
